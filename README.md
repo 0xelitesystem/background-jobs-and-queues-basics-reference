@@ -8,15 +8,19 @@ A background job is a unit of work that runs outside the request that triggered 
 
 ## What is inside
 
-- `01-why-background-jobs.md` why work moves off the request path and what async actually buys you.
-- `02-queues-vs-cron.md` how event-driven queues differ from time-driven cron, and when each fits.
-- `03-idempotency.md` why repeated processing of the same job must be safe, and how to make it so.
-- `04-retries-and-backoff.md` how to retry failed jobs without overwhelming downstream systems.
-- `05-delivery-guarantees-and-dlqs.md` at-least-once delivery, what it implies, and where dead-letter queues fit.
+- [01-why-background-jobs.md](01-why-background-jobs.md) why work moves off the request path and what async actually buys you.
+- [02-queues-vs-cron.md](02-queues-vs-cron.md) how event-driven queues differ from time-driven cron, and when each fits.
+- [03-idempotency.md](03-idempotency.md) why repeated processing of the same job must be safe, and how to make it so.
+- [04-retries-and-backoff.md](04-retries-and-backoff.md) how to retry failed jobs without overwhelming downstream systems.
+- [05-delivery-guarantees-and-dlqs.md](05-delivery-guarantees-and-dlqs.md) at-least-once delivery, what it implies, and where dead-letter queues fit.
 
 ## The stance
 
 Assume every job will run more than once and design for it, because at-least-once delivery is the realistic default and exactly-once is mostly a marketing claim. Prefer a real queue over a database polling loop or a cron-driven batch the moment work is triggered by events rather than by the clock. Treat the dead-letter queue as a first-class part of the system, not an afterthought, because the jobs that land there are the ones telling you something is broken.
+
+## More
+
+Part of a catalog of single-file browser tools and plain-language references, all MIT licensed and dependency-free: [0xelitesystem.github.io](https://0xelitesystem.github.io/). Built by [elitesystem.ai](https://elitesystem.ai).
 
 ## License
 
